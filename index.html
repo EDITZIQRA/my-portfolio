@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>আমার ওয়েবসাইট হাব | পোর্টফোলিও ডিরেক্টরি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Hind Siliguri"', '"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #090d16;
+      color: #f1f5f9;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.16) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.14) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(14, 165, 233, 0.12) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+    .glass-card {
+      background: rgba(17, 24, 39, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(129, 140, 248, 0.45);
+      box-shadow: 0 20px 35px -15px rgba(79, 70, 229, 0.25);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-indigo-500/25">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          </svg>
+        </div>
+        <div>
+          <h1 id="hubTitleDisplay" class="text-lg sm:text-xl font-bold bg-gradient-to-r from-white via-indigo-100 to-slate-300 bg-clip-text text-transparent">
+            আমার ওয়েবসাইট হাব
+          </h1>
+          <p class="text-xs text-slate-400 hidden sm:block">সব প্রজেক্ট ও ওয়েবসাইট এক ঠিকানায়</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <span id="siteCountBadge" class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-800/90 text-slate-300 border border-slate-700/70">
+          মোট ০টি সাইট
+        </span>
+        <button id="openAdminBtn" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-medium bg-slate-800/90 hover:bg-indigo-600 text-slate-200 hover:text-white border border-slate-700 hover:border-indigo-500 transition-all duration-200 shadow-sm cursor-pointer">
+          <svg id="adminLockIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          <span id="adminBtnText">অ্যাডমিন প্যানেল</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero & Search -->
+  <section class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-10 pb-6">
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium mb-4">
+        <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+        অফিসিয়াল ওয়েবসাইট কালেকশন
+      </div>
+      <h2 id="heroHeadline" class="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-3">
+        আমার তৈরি সকল ওয়েবসাইট ও প্রজেক্ট
+      </h2>
+      <p id="heroSubtitle" class="text-slate-400 text-sm sm:text-base">
+        নিচের যেকোনো কার্ডে ক্লিক করে সরাসরি আমার ওয়েবসাইটগুলো ভিজিট করতে পারবেন।
+      </p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="max-w-lg mx-auto relative">
+      <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+      <input type="text" id="searchInput" placeholder="ওয়েবসাইটের নাম বা বিবরণ লিখে খুঁজুন..."
+        class="w-full pl-11 pr-4 py-3 rounded-2xl bg-slate-900/90 border border-slate-700/80 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition text-sm" />
+    </div>
+  </section>
+
+  <!-- Websites Grid -->
+  <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-16">
+    <div id="websitesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Cards injected here -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden text-center py-16 px-4 glass-card rounded-3xl max-w-lg mx-auto mt-6">
+      <div class="w-16 h-16 rounded-2xl bg-slate-800/80 text-slate-400 flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+        </svg>
+      </div>
+      <h3 class="text-lg font-semibold text-white mb-1">কোনো ওয়েবসাইট পাওয়া যায়নি</h3>
+      <p class="text-sm text-slate-400 mb-5">নতুন ওয়েবসাইট যোগ করতে অ্যাডমিন প্যানেলে লগইন করুন।</p>
+      <button onclick="document.getElementById('openAdminBtn').click()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition cursor-pointer">
+        অ্যাডমিন প্যানেল খুলুন
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950/60 py-6 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>&copy; <span id="currentYear"></span> <span id="footerTitle">আমার ওয়েবসাইট হাব</span> • সর্বস্বত্ব সংরক্ষিত</p>
+    </div>
+  </footer>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="bg-slate-900 border border-slate-700/90 rounded-3xl max-w-sm w-full p-6 shadow-2xl transform transition-all">
+      <div class="flex items-center justify-between mb-5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-white">অ্যাডমিন লগইন</h3>
+        </div>
+        <button id="closeLoginModal" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label for="adminPasswordInput" class="block text-sm font-medium text-slate-300 mb-1.5">পাসওয়ার্ড দিন</label>
+          <input type="password" id="adminPasswordInput" placeholder="••••" required
+            class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-center tracking-widest text-lg" />
+          <p id="loginError" class="hidden text-xs text-rose-400 mt-1.5 text-center">ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।</p>
+        </div>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-sm shadow-lg shadow-indigo-500/25 transition cursor-pointer">
+          প্রবেশ করুন
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard Modal -->
+  <div id="adminModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-5xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden my-auto">
+      
+      <!-- Modal Header -->
+      <div class="px-5 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-slate-950/60">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          <h3 class="text-lg font-bold text-white">অ্যাডমিন কন্ট্রোল প্যানেল</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="exportDataBtn" title="ব্যাকআপ ফাইল ডাউনলোড করুন" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition cursor-pointer">
+            ব্যাকআপ ডাউনলোড
+          </button>
+          <label title="ব্যাকআপ ফাইল আপলোড করুন" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition cursor-pointer">
+            রিস্টোর
+            <input type="file" id="importDataInput" accept=".json" class="hidden" />
+          </label>
+          <button id="logoutAdminBtn" class="px-3 py-1.5 rounded-lg bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 text-xs font-medium border border-rose-500/30 transition cursor-pointer">
+            লগআউট
+          </button>
+          <button id="closeAdminModal" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 sm:p-6 overflow-y-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left Column: Add / Edit Form -->
+        <div class="lg:col-span-5 space-y-5">
+          <div class="bg-slate-950/70 border border-slate-800 rounded-2xl p-4 sm:p-5">
+            <h4 id="formModeTitle" class="text-base font-bold text-indigo-300 mb-4 flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+              নতুন ওয়েবসাইট যোগ করুন
+            </h4>
+
+            <form id="siteForm" class="space-y-4">
+              <input type="hidden" id="editSiteId" />
+
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">ওয়েবসাইটের নাম *</label>
+                <input type="text" id="siteNameInput" placeholder="যেমন: আমার ডিজাইন পোর্টফোলিও" required
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">ওয়েবসাইটের লিংক (URL) *</label>
+                <input type="text" id="siteUrlInput" placeholder="https://example.com" required
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">ক্যাটাগরি / ট্যাগ (ঐচ্ছিক)</label>
+                <input type="text" id="siteTagInput" placeholder="যেমন: পোর্টফোলিও, ব্লগ, টুলস"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">সংক্ষিপ্ত বিবরণ (ঐচ্ছিক)</label>
+                <textarea id="siteDescInput" rows="2" placeholder="এই ওয়েবসাইটটি কী বিষয়ে তা সংক্ষেপে লিখুন..."
+                  class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+              </div>
+
+              <!-- Any Size Image Input -->
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">
+                  ওয়েবসাইটের ছবি (যেকোনো সাইজের ছবি দেওয়া যাবে)
+                </label>
+                <div class="border-2 border-dashed border-slate-700 hover:border-indigo-500/70 rounded-xl p-3 text-center transition bg-slate-900/60">
+                  <input type="file" id="siteImageFile" accept="image/*" class="hidden" />
+                  <label for="siteImageFile" class="cursor-pointer flex flex-col items-center justify-center gap-1.5 py-1">
+                    <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="text-xs font-medium text-slate-200">গ্যালারি থেকে ছবি বেছে নিন</span>
+                    <span class="text-[11px] text-slate-400">লম্বা, চওড়া বা স্কয়ার—যেকোনো মাপের ছবি অটো-ফিট হবে</span>
+                  </label>
+                </div>
+
+                <!-- Or Image URL -->
+                <div class="mt-2">
+                  <input type="text" id="siteImageUrlInput" placeholder="অথবা ছবির ডাইরেক্ট লিংক দিন (ঐচ্ছিক)"
+                    class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                </div>
+
+                <!-- Image Preview Box -->
+                <div id="imagePreviewWrapper" class="hidden mt-3 relative rounded-xl overflow-hidden border border-slate-700 bg-slate-950 p-2">
+                  <img id="imagePreview" src="" alt="Preview" class="max-h-40 w-auto mx-auto object-contain rounded-lg" />
+                  <button type="button" id="removeImageBtn" class="absolute top-2 right-2 bg-rose-600 hover:bg-rose-500 text-white rounded-lg p-1 text-xs shadow cursor-pointer" title="ছবি সরান">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 pt-1">
+                <button type="submit" id="saveSiteBtn" class="flex-1 py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition shadow-lg shadow-indigo-500/20 cursor-pointer">
+                  সেভ করুন
+                </button>
+                <button type="button" id="cancelEditBtn" class="hidden py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-sm transition cursor-pointer">
+                  বাতিল
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Hub Settings Box -->
+          <div class="bg-slate-950/70 border border-slate-800 rounded-2xl p-4 sm:p-5">
+            <h4 class="text-sm font-bold text-slate-200 mb-3">পেজের শিরোনাম পরিবর্তন</h4>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-xs text-slate-400 mb-1">হাবের নাম</label>
+                <input type="text" id="settingHubTitle" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-400 mb-1">হিরো হেডলাইন</label>
+                <input type="text" id="settingHeroTitle" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs" />
+              </div>
+              <button type="button" id="saveSettingsBtn" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-indigo-300 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+                শিরোনাম আপডেট করুন
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Existing Websites List -->
+        <div class="lg:col-span-7 flex flex-col">
+          <div class="bg-slate-950/70 border border-slate-800 rounded-2xl p-4 sm:p-5 flex-1">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-base font-bold text-white">যুক্ত করা ওয়েবসাইটসমূহ</h4>
+              <span id="adminListCount" class="text-xs px-2.5 py-1 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/20">০টি</span>
+            </div>
+
+            <div id="adminSitesList" class="space-y-3 max-h-[540px] overflow-y-auto pr-1">
+              <!-- Admin items injected here -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-800 border border-indigo-500/40 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 text-sm">
+      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+      <span id="toastMessage">সফলভাবে সম্পন্ন হয়েছে</span>
+    </div>
+  </div>
+
+  <script>
+    const ADMIN_PASS = "2013";
+    const STORAGE_KEY = "my_website_hub_sites_v1";
+    const SETTINGS_KEY = "my_website_hub_settings_v1";
+    const AUTH_KEY = "my_website_hub_auth_v1";
+
+    const DEFAULT_SITES = [
+      {
+        id: "demo-1",
+        name: "আমার পোর্টফোলিও ওয়েবসাইট",
+        url: "https://example.com",
+        tag: "পোর্টফোলিও",
+        description: "আমার সকল ক্রিয়েটিভ ডিজাইন, প্রজেক্ট এবং কাজের সংগ্রহশালা।",
+        image: ""
+      },
+      {
+        id: "demo-2",
+        name: "ডিজিটাল প্রোডাক্ট ও রিসোর্স স্টোর",
+        url: "https://github.com",
+        tag: "স্টোর",
+        description: "বিভিন্ন টেমপ্লেট, ই-বুক এবং ডিজিটাল রিসোর্স ডাউনলোডের প্ল্যাটফর্ম।",
+        image: ""
+      }
+    ];
+
+    const DEFAULT_SETTINGS = {
+      hubTitle: "আমার ওয়েবসাইট হাব",
+      heroTitle: "আমার তৈরি সকল ওয়েবসাইট ও প্রজেক্ট"
+    };
+
+    let sites = [];
+    let settings = { ...DEFAULT_SETTINGS };
+    let currentImageData = "";
+    let isAuthenticated = sessionStorage.getItem(AUTH_KEY) === "true";
+
+    // DOM Elements
+    const websitesGrid = document.getElementById("websitesGrid");
+    const emptyState = document.getElementById("emptyState");
+    const searchInput = document.getElementById("searchInput");
+    const siteCountBadge = document.getElementById("siteCountBadge");
+    const openAdminBtn = document.getElementById("openAdminBtn");
+    const adminBtnText = document.getElementById("adminBtnText");
+
+    const loginModal = document.getElementById("loginModal");
+    const closeLoginModal = document.getElementById("closeLoginModal");
+    const loginForm = document.getElementById("loginForm");
+    const adminPasswordInput = document.getElementById("adminPasswordInput");
+    const loginError = document.getElementById("loginError");
+
+    const adminModal = document.getElementById("adminModal");
+    const closeAdminModal = document.getElementById("closeAdminModal");
+    const logoutAdminBtn = document.getElementById("logoutAdminBtn");
+
+    const siteForm = document.getElementById("siteForm");
+    const formModeTitle = document.getElementById("formModeTitle");
+    const editSiteId = document.getElementById("editSiteId");
+    const siteNameInput = document.getElementById("siteNameInput");
+    const siteUrlInput = document.getElementById("siteUrlInput");
+    const siteTagInput = document.getElementById("siteTagInput");
+    const siteDescInput = document.getElementById("siteDescInput");
+    const siteImageFile = document.getElementById("siteImageFile");
+    const siteImageUrlInput = document.getElementById("siteImageUrlInput");
+    const imagePreviewWrapper = document.getElementById("imagePreviewWrapper");
+    const imagePreview = document.getElementById("imagePreview");
+    const removeImageBtn = document.getElementById("removeImageBtn");
+    const saveSiteBtn = document.getElementById("saveSiteBtn");
+    const cancelEditBtn = document.getElementById("cancelEditBtn");
+    const adminSitesList = document.getElementById("adminSitesList");
+    const adminListCount = document.getElementById("adminListCount");
+
+    const settingHubTitle = document.getElementById("settingHubTitle");
+    const settingHeroTitle = document.getElementById("settingHeroTitle");
+    const saveSettingsBtn = document.getElementById("saveSettingsBtn");
+
+    const exportDataBtn = document.getElementById("exportDataBtn");
+    const importDataInput = document.getElementById("importDataInput");
+
+    // Initialize
+    function init() {
+      document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+      const savedSites = localStorage.getItem(STORAGE_KEY);
+      if (savedSites) {
+        try {
+          sites = JSON.parse(savedSites);
+        } catch (e) {
+          sites = [...DEFAULT_SITES];
+        }
+      } else {
+        sites = [...DEFAULT_SITES];
+        saveToStorage();
+      }
+
+      const savedSettings = localStorage.getItem(SETTINGS_KEY);
+      if (savedSettings) {
+        try {
+          settings = { ...DEFAULT_SETTINGS, ...JSON.parse(savedSettings) };
+        } catch (e) {}
+      }
+
+      applySettings();
+      updateAdminButtonState();
+      renderPublicSites();
+    }
+
+    function saveToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(sites));
+      } catch (e) {
+        showToast("স্টোরেজ পূর্ণ হয়ে গেছে! অনুগ্রহ করে অপেক্ষাকৃত ছোট ছবি ব্যবহার করুন।");
+      }
+    }
+
+    function applySettings() {
+      document.getElementById("hubTitleDisplay").textContent = settings.hubTitle;
+      document.getElementById("footerTitle").textContent = settings.hubTitle;
+      document.getElementById("heroHeadline").textContent = settings.heroTitle;
+      document.title = settings.hubTitle;
+      settingHubTitle.value = settings.hubTitle;
+      settingHeroTitle.value = settings.heroTitle;
+    }
+
+    function formatUrl(url) {
+      let clean = url.trim();
+      if (!clean) return "#";
+      if (!/^https?:\/\//i.test(clean)) {
+        clean = "https://" + clean;
+      }
+      return clean;
+    }
+
+    function getDomainName(url) {
+      try {
+        const u = new URL(formatUrl(url));
+        return u.hostname.replace(/^www\./, "");
+      } catch (e) {
+        return url;
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      document.getElementById("toastMessage").textContent = msg;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 3000);
+    }
+
+    // Render Public Cards
+    function renderPublicSites() {
+      const query = searchInput.value.trim().toLowerCase();
+      const filtered = sites.filter(s =>
+        s.name.toLowerCase().includes(query) ||
+        (s.description && s.description.toLowerCase().includes(query)) ||
+        (s.tag && s.tag.toLowerCase().includes(query)) ||
+        s.url.toLowerCase().includes(query)
+      );
+
+      siteCountBadge.textContent = `মোট ${sites.length}টি সাইট`;
+      websitesGrid.innerHTML = "";
+
+      if (filtered.length === 0) {
+        websitesGrid.classList.add("hidden");
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      websitesGrid.classList.remove("hidden");
+      emptyState.classList.add("hidden");
+
+      filtered.forEach(site => {
+        const safeUrl = formatUrl(site.url);
+        const domain = getDomainName(safeUrl);
+        const card = document.createElement("a");
+        card.href = safeUrl;
+        card.target = "_blank";
+        card.rel = "noopener noreferrer";
+        card.className = "glass-card group rounded-3xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1.5";
+
+        const imageSection = site.image
+          ? `<div class="relative w-full h-52 bg-slate-950/90 flex items-center justify-center overflow-hidden border-b border-slate-800/80 p-2">
+               <img src="${site.image}" alt="${escapeHtml(site.name)}" class="max-w-full max-h-full w-auto h-auto object-contain rounded-xl transition-transform duration-500 group-hover:scale-105" />
+               ${site.tag ? `<span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-900/85 backdrop-blur-md text-indigo-300 border border-indigo-500/30">${escapeHtml(site.tag)}</span>` : ""}
+             </div>`
+          : `<div class="relative w-full h-44 bg-gradient-to-br from-indigo-950/80 via-slate-900 to-purple-950/70 flex flex-col items-center justify-center border-b border-slate-800/80 p-4">
+               <div class="w-14 h-14 rounded-2xl bg-indigo-500/15 border border-indigo-400/25 flex items-center justify-center text-indigo-300 text-2xl font-bold mb-2 group-hover:scale-110 transition-transform">
+                 ${escapeHtml(site.name.charAt(0).toUpperCase())}
+               </div>
+               <span class="text-xs text-slate-400 font-mono">${escapeHtml(domain)}</span>
+               ${site.tag ? `<span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-900/85 text-indigo-300 border border-indigo-500/30">${escapeHtml(site.tag)}</span>` : ""}
+             </div>`;
+
+        card.innerHTML = `
+          ${imageSection}
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition line-clamp-1">
+                  ${escapeHtml(site.name)}
+                </h3>
+                <span class="p-1.5 rounded-lg bg-slate-800/80 text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition shrink-0">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </span>
+              </div>
+              <p class="text-sm text-slate-400 line-clamp-2 mb-4">
+                ${site.description ? escapeHtml(site.description) : "ওয়েবসাইটটি ভিজিট করতে এখানে ক্লিক করুন।"}
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+              <span class="text-slate-400 truncate max-w-[70%] font-mono">${escapeHtml(domain)}</span>
+              <span class="text-indigo-400 font-semibold group-hover:translate-x-0.5 transition-transform">ভিজিট করুন &rarr;</span>
+            </div>
+          </div>
+        `;
+        websitesGrid.appendChild(card);
+      });
+    }
+
+    // Render Admin List
+    function renderAdminList() {
+      adminListCount.textContent = `${sites.length}টি`;
+      adminSitesList.innerHTML = "";
+
+      if (sites.length === 0) {
+        adminSitesList.innerHTML = `<p class="text-center text-sm text-slate-500 py-10">এখনো কোনো ওয়েবসাইট যোগ করা হয়নি। বাম পাশের ফর্ম থেকে যোগ করুন।</p>`;
+        return;
+      }
+
+      sites.forEach((site, index) => {
+        const item = document.createElement("div");
+        item.className = "flex items-center justify-between gap-3 p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition";
+
+        const thumb = site.image
+          ? `<img src="${site.image}" class="w-14 h-14 rounded-xl object-contain bg-slate-950 border border-slate-800 shrink-0 p-1" />`
+          : `<div class="w-14 h-14 rounded-xl bg-indigo-500/15 border border-indigo-500/20 text-indigo-300 font-bold flex items-center justify-center shrink-0 text-lg">${escapeHtml(site.name.charAt(0).toUpperCase())}</div>`;
+
+        item.innerHTML = `
+          <div class="flex items-center gap-3 min-w-0">
+            ${thumb}
+            <div class="min-w-0">
+              <h5 class="text-sm font-bold text-white truncate">${escapeHtml(site.name)}</h5>
+              <a href="${formatUrl(site.url)}" target="_blank" class="text-xs text-indigo-400 hover:underline truncate block">${escapeHtml(site.url)}</a>
+              ${site.tag ? `<span class="inline-block mt-1 text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">${escapeHtml(site.tag)}</span>` : ""}
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button onclick="moveSite(${index}, -1)" ${index === 0 ? "disabled" : ""} title="উপরে নিন" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-30 text-slate-300 cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+            </button>
+            <button onclick="moveSite(${index}, 1)" ${index === sites.length - 1 ? "disabled" : ""} title="নিচে নিন" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-30 text-slate-300 cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <button onclick="editSite('${site.id}')" title="এডিট করুন" class="px-2.5 py-1.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 text-xs font-medium cursor-pointer">
+              এডিট
+            </button>
+            <button onclick="deleteSite('${site.id}')" title="মুছে ফেলুন" class="px-2.5 py-1.5 rounded-lg bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 text-xs font-medium cursor-pointer">
+              ডিলিট
+            </button>
+          </div>
+        `;
+        adminSitesList.appendChild(item);
+      });
+    }
+
+    // Image Upload & Smart Resize (Preserves Any Aspect Ratio)
+    siteImageFile.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const img = new Image();
+        img.onload = function () {
+          const canvas = document.createElement("canvas");
+          const MAX_DIMENSION = 900;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
+            if (width > height) {
+              height = Math.round((height * MAX_DIMENSION) / width);
+              width = MAX_DIMENSION;
+            } else {
+              width = Math.round((width * MAX_DIMENSION) / height);
+              height = MAX_DIMENSION;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const isPng = file.type === "image/png" || file.type === "image/webp";
+          currentImageData = isPng ? canvas.toDataURL("image/png") : canvas.toDataURL("image/jpeg", 0.85);
+          siteImageUrlInput.value = "";
+          showPreview(currentImageData);
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    siteImageUrlInput.addEventListener("input", function () {
+      const val = this.value.trim();
+      if (val) {
+        currentImageData = val;
+        siteImageFile.value = "";
+        showPreview(val);
+      } else if (!siteImageFile.files.length) {
+        hidePreview();
+      }
+    });
+
+    function showPreview(src) {
+      imagePreview.src = src;
+      imagePreviewWrapper.classList.remove("hidden");
+    }
+
+    function hidePreview() {
+      currentImageData = "";
+      imagePreview.src = "";
+      imagePreviewWrapper.classList.add("hidden");
+      siteImageFile.value = "";
+      siteImageUrlInput.value = "";
+    }
+
+    removeImageBtn.addEventListener("click", hidePreview);
+
+    // Add / Update Site
+    siteForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = siteNameInput.value.trim();
+      const url = siteUrlInput.value.trim();
+      const tag = siteTagInput.value.trim();
+      const description = siteDescInput.value.trim();
+      const id = editSiteId.value;
+
+      if (!name || !url) return;
+
+      if (id) {
+        const idx = sites.findIndex(s => s.id === id);
+        if (idx !== -1) {
+          sites[idx] = {
+            ...sites[idx],
+            name,
+            url,
+            tag,
+            description,
+            image: currentImageData
+          };
+          showToast("ওয়েবসাইটের তথ্য আপডেট হয়েছে!");
+        }
+      } else {
+        sites.unshift({
+          id: "site-" + Date.now(),
+          name,
+          url,
+          tag,
+          description,
+          image: currentImageData
+        });
+        showToast("নতুন ওয়েবসাইট যুক্ত হয়েছে!");
+      }
+
+      saveToStorage();
+      resetForm();
+      renderPublicSites();
+      renderAdminList();
+    });
+
+    window.editSite = function (id) {
+      const site = sites.find(s => s.id === id);
+      if (!site) return;
+
+      editSiteId.value = site.id;
+      siteNameInput.value = site.name;
+      siteUrlInput.value = site.url;
+      siteTagInput.value = site.tag || "";
+      siteDescInput.value = site.description || "";
+      currentImageData = site.image || "";
+
+      if (currentImageData) {
+        if (currentImageData.startsWith("http")) {
+          siteImageUrlInput.value = currentImageData;
+        }
+        showPreview(currentImageData);
+      } else {
+        hidePreview();
+      }
+
+      formModeTitle.textContent = "ওয়েবসাইট এডিট করুন";
+      saveSiteBtn.textContent = "আপডেট করুন";
+      cancelEditBtn.classList.remove("hidden");
+    };
+
+    window.deleteSite = function (id) {
+      if (!confirm("আপনি কি নিশ্চিতভাবে এই ওয়েবসাইটটি মুছে ফেলতে চান?")) return;
+      sites = sites.filter(s => s.id !== id);
+      saveToStorage();
+      if (editSiteId.value === id) resetForm();
+      renderPublicSites();
+      renderAdminList();
+      showToast("ওয়েবসাইটটি মুছে ফেলা হয়েছে।");
+    };
+
+    window.moveSite = function (index, direction) {
+      const newIndex = index + direction;
+      if (newIndex < 0 || newIndex >= sites.length) return;
+      const temp = sites[index];
+      sites[index] = sites[newIndex];
+      sites[newIndex] = temp;
+      saveToStorage();
+      renderPublicSites();
+      renderAdminList();
+    };
+
+    function resetForm() {
+      siteForm.reset();
+      editSiteId.value = "";
+      hidePreview();
+      formModeTitle.innerHTML = `
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        নতুন ওয়েবসাইট যোগ করুন
+      `;
+      saveSiteBtn.textContent = "সেভ করুন";
+      cancelEditBtn.classList.add("hidden");
+    }
+
+    cancelEditBtn.addEventListener("click", resetForm);
+
+    // Hub Settings Save
+    saveSettingsBtn.addEventListener("click", function () {
+      const newHub = settingHubTitle.value.trim();
+      const newHero = settingHeroTitle.value.trim();
+      if (newHub) settings.hubTitle = newHub;
+      if (newHero) settings.heroTitle = newHero;
+      localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+      applySettings();
+      showToast("পেজের শিরোনাম আপডেট হয়েছে!");
+    });
+
+    // Export / Import Backup
+    exportDataBtn.addEventListener("click", function () {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(sites, null, 2));
+      const a = document.createElement("a");
+      a.setAttribute("href", dataStr);
+      a.setAttribute("download", "my-websites-backup.json");
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToast("ব্যাকআপ ফাইল ডাউনলোড হয়েছে!");
+    });
+
+    importDataInput.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        try {
+          const parsed = JSON.parse(ev.target.result);
+          if (Array.isArray(parsed)) {
+            sites = parsed;
+            saveToStorage();
+            renderPublicSites();
+            renderAdminList();
+            showToast("ব্যাকআপ থেকে ডাটা রিস্টোর হয়েছে!");
+          } else {
+            showToast("সঠিক ব্যাকআপ ফাইল নয়!");
+          }
+        } catch (err) {
+          showToast("ফাইল পড়তে সমস্যা হয়েছে!");
+        }
+      };
+      reader.readAsText(file);
+      this.value = "";
+    });
+
+    // Auth & Modals
+    function updateAdminButtonState() {
+      if (isAuthenticated) {
+        adminBtnText.textContent = "কন্ট্রোল প্যানেল";
+        openAdminBtn.classList.add("border-emerald-500/50", "text-emerald-300");
+      } else {
+        adminBtnText.textContent = "অ্যাডমিন প্যানেল";
+        openAdminBtn.classList.remove("border-emerald-500/50", "text-emerald-300");
+      }
+    }
+
+    openAdminBtn.addEventListener("click", function () {
+      if (isAuthenticated) {
+        openAdminDashboard();
+      } else {
+        loginError.classList.add("hidden");
+        adminPasswordInput.value = "";
+        loginModal.classList.remove("hidden");
+        loginModal.classList.add("flex");
+        setTimeout(() => adminPasswordInput.focus(), 100);
+      }
+    });
+
+    closeLoginModal.addEventListener("click", () => {
+      loginModal.classList.add("hidden");
+      loginModal.classList.remove("flex");
+    });
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (adminPasswordInput.value === ADMIN_PASS) {
+        isAuthenticated = true;
+        sessionStorage.setItem(AUTH_KEY, "true");
+        updateAdminButtonState();
+        loginModal.classList.add("hidden");
+        loginModal.classList.remove("flex");
+        openAdminDashboard();
+        showToast("স্বাগতম! অ্যাডমিন প্যানেল আনলক হয়েছে।");
+      } else {
+        loginError.classList.remove("hidden");
+        adminPasswordInput.value = "";
+        adminPasswordInput.focus();
+      }
+    });
+
+    function openAdminDashboard() {
+      renderAdminList();
+      adminModal.classList.remove("hidden");
+      adminModal.classList.add("flex");
+    }
+
+    closeAdminModal.addEventListener("click", () => {
+      adminModal.classList.add("hidden");
+      adminModal.classList.remove("flex");
+    });
+
+    logoutAdminBtn.addEventListener("click", () => {
+      isAuthenticated = false;
+      sessionStorage.removeItem(AUTH_KEY);
+      updateAdminButtonState();
+      adminModal.classList.add("hidden");
+      adminModal.classList.remove("flex");
+      showToast("অ্যাডমিন প্যানেল লক করা হয়েছে।");
+    });
+
+    searchInput.addEventListener("input", renderPublicSites);
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    init();
+  </script>
+</body>
+</html>
